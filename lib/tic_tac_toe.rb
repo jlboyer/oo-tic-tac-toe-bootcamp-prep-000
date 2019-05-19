@@ -8,6 +8,9 @@ d1 = [0,4,8]
 d2 = [2,4,6]
 WIN_COMBINATIONS = [v1, v2, v3, h1, h2, h3, d1, d2]
 
+
+class TicTacToe
+  def 
 def display_board(board)
     puts " #{board[0]} | #{board[1]} | #{board[2]} "
     puts "-----------"
