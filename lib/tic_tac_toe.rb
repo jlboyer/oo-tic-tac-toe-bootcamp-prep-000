@@ -14,6 +14,21 @@ class TicTacToe
     @board = board || Array.new(9, " ")
   end
   
+  def current_player
+    turn_count % 2 == 0 ? "X" : "O"
+  end
+  
+  def turn_count
+    count = 0
+    board.each do |value|
+      if value == "X" || value == "O"
+        count += 1
+      end
+    end
+    count
+  end
+  
+  
 def display_board(board)
     puts " #{board[0]} | #{board[1]} | #{board[2]} "
     puts "-----------"
@@ -68,15 +83,6 @@ end
     end
   end 
 
-  def turn_count(board)
-    count = 0
-    board.each do |value|
-      if value == "X" || value == "O"
-        count += 1
-      end
-    end
-    count
-  end
   
 
 def won?(board)
