@@ -106,13 +106,13 @@ class TicTacToe
     @board.combo != false ? @board[combo[0]] : nil
   end
   
-  def play(board)
+  def play
     i = 0
-    while i < 9 && over?(board) == false
-      turn(board)
+    while i < 9 && over? == false
+      turn
       i += 1
     end
-    if draw?(board)
+    if draw?
         puts "Cat\'s Game!"
     else
         puts "Congratulations #{winner(board)}!"
