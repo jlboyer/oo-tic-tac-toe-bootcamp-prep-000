@@ -38,22 +38,23 @@ class TicTacToe
     end
   end
   
-  
+  def valid_move?
+    @board.index >= 0 && @board.index < 9 && !position_taken?
+  end
   
   def turn
     puts "Please enter 1-9:"
     input = gets.strip
-    input = @board.input_to_index
-    index = input
-    if valid_move?(@board, index)
-      move(@board, input, @board.current_player)
+    @board.input_to_index(input)
+    if valid_move?
+      move(@board.index, @board.current_player)
       @board.display_board
     else
       @board.turn
     end
   end 
 
-   def current_player
+  def current_player
     turn_count % 2 == 0 ? "X" : "O"
   end
   
@@ -61,41 +62,26 @@ class TicTacToe
     @board.count{|token| token == "X" || token == "O"}
   end
 
-
-
-  def valid_move?(board, index)
-    index = index.to_i
-    index >= 0 && index < 9 && !position_taken?(board,index)
-  end
-
-#   def valid_move?(board, index)
-#     index.between?(0,8) && !(position_taken?(board, index))
-#   end
-
- 
-
-  
-
-def won?(board)
-  x_combo = []
-  y_combo = []
-  board.each_with_index do |v, i|
-    if v == "X"
-      x_combo << i
-    elsif v == "O"
-      y_combo << i
+  def won?
+    x_combo = []
+    y_combo = []
+    @board.each_with_index do |v, i|
+      if v == "X"
+        x_combo << i
+      elsif v == "O"
+        y_combo << i
+      end
     end
-  end
-   WIN_COMBINATIONS.each do |v|
+    WIN_COMBINATIONS.each do |v|
       if (x_combo.include?(v[0]) && x_combo.include?(v[1]) && x_combo.include?(v[2])) || (y_combo.include?(v[0]) && y_combo.include?(v[1]) && y_combo.include?(v[2]))
         return v
       end
     end
-  return false
-end
+    return false
+  end
 
-def full?(board)
-    board.all? do |i|
+  def full?
+    @board.all? do |i|
       if i == "X" || i == "O"
         true
       else
@@ -104,19 +90,19 @@ def full?(board)
     end
   end
   
-  def draw?(board)
-    !won?(board) && full?(board)
+  def draw?
+    !won? && full?
   end
   
-  def over?(board)
-    if won?(board) || draw?(board) || full?(board)
+  def over?
+    if won? || draw? || full?
       true
     else
       false
     end
   end
   
-  def winner(board)
+  def winner
     combo = won?(board)
     if combo != false
       return board[combo[0]]
