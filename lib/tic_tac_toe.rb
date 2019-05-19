@@ -19,23 +19,29 @@ class TicTacToe
   end
   
   def turn_count
-    count = 0
-    board.each do |value|
-      if value == "X" || value == "O"
-        count += 1
-      end
-    end
-    count
+    @board.count{|token| token == "X" || token == "O"}
   end
   
+  def display_board(board)
+    puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
+    puts "-----------"
+    puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
+    puts "-----------"
+    puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
+  end
   
-def display_board(board)
-    puts " #{board[0]} | #{board[1]} | #{board[2]} "
-    puts "-----------"
-    puts " #{board[3]} | #{board[4]} | #{board[5]} "
-    puts "-----------"
-    puts " #{board[6]} | #{board[7]} | #{board[8]} "
-end
+   def turn
+    puts "Please enter 1-9:"
+    input = gets.strip
+    input = input_to_index(input)
+    index = input
+    if valid_move?(@board, index)
+      move(@board, input, current_player(board))
+      display_board(board)
+    else
+      turn(board)
+    end
+  end 
 
 
 
@@ -69,19 +75,7 @@ end
 #     index.between?(0,8) && !(position_taken?(board, index))
 #   end
 
-  def turn(board)
-    puts "Please enter 1-9:"
-    input = gets.strip
-    input = input_to_index(input)
-    index = input
-    if valid_move?(board, index)
-    #   value = current_player(board)
-      move(board, input, current_player(board))
-      display_board(board)
-    else
-      turn(board)
-    end
-  end 
+ 
 
   
 
