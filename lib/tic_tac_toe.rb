@@ -1,19 +1,19 @@
-v1 = [0,3,6]
-v2 = [1,4,7]
-v3 = [2,5,8]
-h1 = [0,1,2]
-h2 = [3,4,5]
-h3 = [6,7,8]
-d1 = [0,4,8]
-d2 = [2,4,6]
-WIN_COMBINATIONS = [v1, v2, v3, h1, h2, h3, d1, d2]
-
 
 class TicTacToe
   def initialize(board = nil)
     @board = board || Array.new(9, " ")
   end
   
+  v1 = [0,3,6]
+  v2 = [1,4,7]
+  v3 = [2,5,8]
+  h1 = [0,1,2]
+  h2 = [3,4,5]
+  h3 = [6,7,8]
+  d1 = [0,4,8]
+  d2 = [2,4,6]
+  WIN_COMBINATIONS = [v1, v2, v3, h1, h2, h3, d1, d2]
+
   def current_player
     turn_count % 2 == 0 ? "X" : "O"
   end
@@ -30,7 +30,7 @@ class TicTacToe
     puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
   end
   
-   def turn
+  def turn
     puts "Please enter 1-9:"
     input = gets.strip
     input = input_to_index(input)
