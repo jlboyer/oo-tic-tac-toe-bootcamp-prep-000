@@ -14,14 +14,6 @@ class TicTacToe
   d2 = [2,4,6]
   WIN_COMBINATIONS = [v1, v2, v3, h1, h2, h3, d1, d2]
 
-  def current_player
-    turn_count % 2 == 0 ? "X" : "O"
-  end
-  
-  def turn_count
-    @board.count{|token| token == "X" || token == "O"}
-  end
-  
   def display_board(board)
     puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
     puts "-----------"
@@ -29,6 +21,11 @@ class TicTacToe
     puts "-----------"
     puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
   end
+  
+  def input_to_index(input)
+    index = input.to_i - 1
+  end
+  
   
   def turn
     puts "Please enter 1-9:"
@@ -43,12 +40,15 @@ class TicTacToe
     end
   end 
 
-
+   def current_player
+    turn_count % 2 == 0 ? "X" : "O"
+  end
+  
+  def turn_count
+    @board.count{|token| token == "X" || token == "O"}
+  end
 
   
-  def input_to_index(input)
-    index = input.to_i - 1
-  end
   
   def move(board,index,character)
     board[index] = character
