@@ -1,22 +1,3 @@
-Skip to content
- 
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@jlboyer 
-1
-0 859 AlbertCarreras/oo-tic-tac-toe-bootcamp-prep-000
-forked from learn-co-students/oo-tic-tac-toe-bootcamp-prep-000
- Code  Pull requests 0  Projects 0  Insights
-oo-tic-tac-toe-bootcamp-prep-000/lib/tic_tac_toe.rb
- Alberto Carreras Done.
-3a528a6 on Apr 24, 2018
-130 lines (110 sloc)  2.42 KB
-    
 class TicTacToe 
 
   def initialize
@@ -147,15 +128,3 @@ WIN_COMBINATIONS = [
   end
 
 end
-© 2019 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
